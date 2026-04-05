@@ -88,3 +88,17 @@ export function updateQuantity(productId, newQuantity) {
   saveToStorage();
 }
 
+
+export function loadCartFromBackend(functionToBeRun) {
+  const xhr = new XMLHttpRequest();
+  xhr.addEventListener('load', () => {
+    
+    console.log(xhr.response);
+  
+    functionToBeRun();
+  });
+
+  xhr.open('GET', 'https://supersimplebackend.dev/cart');
+  xhr.send();
+
+}
